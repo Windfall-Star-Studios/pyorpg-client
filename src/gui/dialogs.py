@@ -4,8 +4,8 @@ from constants import *
 
 def alertMessageDialog(msg='', title=''):
     # show an alert message
-    if title is '':
-        title = gui.Label('Alert Message')
+    if title == '':
+        title = gui.Label('Atencion!')
     else:
         title = gui.Label(title)
 
@@ -15,6 +15,9 @@ def alertMessageDialog(msg='', title=''):
     mainTable.td(gui.Spacer(10, 10))
 
     mainTable.tr()
+    ##Aqui toca agregar un condicional para cuando los
+    ##Mensajes de alerta sean mayores al tamaño de la ventana
+    ## gui.Label(msg).style.width
     mainTable.td(gui.Label(msg))
 
     mainTable.tr()

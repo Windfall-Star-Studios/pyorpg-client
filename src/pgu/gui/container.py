@@ -149,7 +149,7 @@ class Container(widget.Widget):
     def top_surface(self,s,w):
         x,y = s.get_abs_offset()
         s = s.get_abs_parent()
-        return surface.subsurface(s,(x-w.rect.x,y+w.rect.y,w.rect.w,w.rect.h))
+        return surface.subsurface(s,(x+w.rect.x,y+w.rect.y,w.rect.w,w.rect.h))
     
     def event(self,e):
         used = False

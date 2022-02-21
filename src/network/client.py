@@ -47,8 +47,9 @@ class gameClientProtocol(LineReceiver):
         global dataHandler
 
         # handle base64 data
+        
         decodedData = base64.b64decode(data)
-
+        decodedData = decodedData.decode()
         log("Received data from server")
         log(" -> " + decodedData)
 
@@ -56,6 +57,7 @@ class gameClientProtocol(LineReceiver):
 
     def sendData(self, data):
         # encode data using base64
+        data = data.encode()
         encodedData = base64.b64encode(data)
         self.sendLine(encodedData)
 
@@ -72,7 +74,7 @@ class gameClientFactory(ClientFactory):
 
     def clientConnectionFailed(self, connector, reason):
         errorMsg = reason.getErrorMessage().split(':')
-        alertMessageDialog('Unable to connect to server: ' + errorMsg[1] + errorMsg[2], 'An error occured')
+        alertMessageDialog('Fue imposible conectarse al servidor, intenta mas tarde.')
         print (reason.getErrorMessage())
 
     def clientConnectionLost(self, connector, reason):
